@@ -21,7 +21,7 @@ eller bare se denne videoen:
 Klon prosjektet fra GitHub:
 
 ```bash
-git clone 
+git clone https://github.com/StenerNordnes/Oblig-Matematikk4.git
 ```
 
 Last ned avhengigheter:
