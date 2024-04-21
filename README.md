@@ -8,7 +8,7 @@ Dette skriptet simulerer varmelikningen i 2 dimensjoner på en firkantet plate.
 For å se resultatet av simuleringen, kjør denne kommandoen i terminalen:
 
 ```bash
-python3 main.py
+python main.py
 ```
 
 eller bare se denne videoen:
