@@ -1,5 +1,5 @@
 # Oblig - Matematikk 4
-##### <span style="color:gray">Stener T. Nordnes</span>
+### <span style="color:gray">Stener T. Nordnes</span>
 
 Dette skriptet simulerer varmelikningen i 2 dimensjoner på en firkantet plate.
 
