@@ -1,8 +1,10 @@
+import random
 from functools import lru_cache
+from typing import Callable
+
+import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
-import random
-import matplotlib.pyplot as plt
 
 L: int = 20
 T: int = 400
@@ -15,22 +17,36 @@ gamma: float = (alpha * dt) / (dx**2)
 
 u: np.ndarray = np.zeros((T, L, L))  # løsning
 
+
 # forskjellige initialbetingelser
-sin_initial = lambda i, j: np.sin(np.pi * i * dx / L) * np.sin(np.pi * j * dx / L)
-cos_initial = lambda i, j: np.cos(np.pi * i * dx / L) * np.cos(np.pi * j * dx / L)
-rampe_initial = lambda i, j: i * dx / L
-dirac_initial = lambda i, j: 2 if i == L // 2 and j == L // 2 else 0
-random_initial = lambda i, j: random.random()
+def sin_initial(i, j):
+    return np.sin(np.pi * i * dx / L) * np.sin(np.pi * j * dx / L)
 
 
-def initial(func) -> None:
+def cos_initial(i, j):
+    return np.cos(np.pi * i * dx / L) * np.cos(np.pi * j * dx / L)
+
+
+def rampe_initial(i, j):
+    return i * dx / L
+
+
+def dirac_initial(i, j):
+    return 2 if i == L // 2 and j == L // 2 else 0
+
+
+def random_initial(i, j):
+    return random.random()
+
+
+def initial(func: Callable[[int, int], float]) -> None:
     for i in range(L):
         for j in range(L):
             u[0, i, j] = func(i, j)
 
 
 # fylle initialbetingelser
-initial(sin_initial)
+initial(rampe_initial)
 
 
 @lru_cache(maxsize=None)
